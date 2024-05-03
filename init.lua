@@ -927,10 +927,16 @@ require('lazy').setup({
 
 require('lualine').setup {
   options = {
-    icons_enabled = true,
+    icons_enabled = false,
+    component_separators = { left = '|', right = '|' },
   },
   sections = {
     lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
   },
 }
 
