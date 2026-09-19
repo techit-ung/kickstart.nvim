@@ -189,6 +189,7 @@ do
 
   vim.keymap.set('n', '<leader><', ':%s/^\\s\\+//<CR>', { desc = '[<] Clear leading whitespace' })
   vim.keymap.set('n', '<leader>>', ':%s/\\s\\+$//<CR>', { desc = '[>] Clear trailing whitespace' })
+  vim.keymap.set('v', '<leader>/', 'y/\\V<C-r>"<CR>', { desc = 'Search selected text literally' })
 
   -- Clear highlights on search when pressing <Esc> in normal mode
   --  See `:help hlsearch`
@@ -500,7 +501,14 @@ do
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
-end
+
+  require('mini.pairs').setup()
+  require('mini.indentscope').setup {
+    draw = {
+      animation = require('mini.indentscope').gen_animation.none()
+    }
+  }
+  end
 
 -- ============================================================
 -- SECTION 5: SEARCH & NAVIGATION
@@ -749,7 +757,7 @@ do
     clangd = {},
     -- gopls = {},
     -- pyright = {},
-    -- tsc = {},
+    tsc = {},
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
     --    https://github.com/mrcjkb/rustaceanvim
